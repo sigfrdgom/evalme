@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark" >
-    <a class="navbar-brand" href="<?= base_url()?>">Evalme &star;</a>
+    <a class="navbar-brand" href="<?= base_url()?>">EVALUAME &star;</a>
     <button class="navbar-toggler d-lg-none font-weight-bold" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
         aria-label="Toggle navigation">&equiv;</button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">

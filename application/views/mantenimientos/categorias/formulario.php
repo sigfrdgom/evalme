@@ -10,8 +10,8 @@
         <div class="form-group">
             <label for="estadoCategoria font-weight-bold" style="font-weight: bolder">Estado categoria</label>
             <select class="form-control" name="estadoCategoria" id="estadoCategoria">
-                <option value="1">ACTIVO</option>
-                <option value="0">INACTIVO</option>
+                <option value="1" style="background-color: rgba(0, 128, 0, 0.25)">ACTIVO</option>
+                <option value="0" style="background-color: rgba(255, 0, 0, 0.25)">INACTIVO</option>
             </select>
         </div>
     </div>

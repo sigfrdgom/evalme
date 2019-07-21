@@ -11,8 +11,8 @@
         <div class="form-group">
             <label for="estadoCategoria font-weight-bold" style="font-weight: bolder">Estado categoria</label>
             <select class="form-control" name="estadoCategoria" id="estadoCategoria">
-                <option value="1" <?= ($categorias[0]->estado == 1)?'selected':''?> >ACTIVO</option>
-                <option value="0"  <?= ($categorias[0]->estado == 0)?'selected':''?>>INACTIVO</option>
+                <option value="1" style="background-color: rgba(0, 128, 0, 0.25)" <?= ($categorias[0]->estado == 1)?'selected':''?> >ACTIVO</option>
+                <option value="0" style="background-color: rgba(255, 0, 0, 0.25)" <?= ($categorias[0]->estado == 0)?'selected':''?>>INACTIVO</option>
             </select>
         </div>
     </div>

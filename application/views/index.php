@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>&starf; EVALME &starf; </title>
+	<title>&starf; EVALUAME &starf; </title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -28,7 +28,8 @@
 	
 	<!-- El contenedor principal de la aplicacion donde cargaremos todo -->
 	<div class="container-fluid mb-5 mt-3 mx-2" id="main-content" >
-	
+		<h1>BIENVENIDO</h1><hr>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero minus fugit expedita neque repudiandae, rem distinctio consequatur dolor ullam inventore numquam! Ad a, at nulla earum maiores assumenda. Eius, reiciendis.
 	</div>
 
 	<!-- Importamos el footer -->

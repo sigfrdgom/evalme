@@ -27,6 +27,8 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `categorias`
 --
+CREATE DATABASE evalme;
+USE evalme;
 
 CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
@@ -191,6 +193,9 @@ ALTER TABLE `docentes`
 ALTER TABLE `instituciones`
   MODIFY `id_institucion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
+
+ALTER TABLE `especialidades`
+  MODIFY `id_especialidad` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Restricciones para tablas volcadas
 --

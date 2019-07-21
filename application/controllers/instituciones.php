@@ -30,7 +30,6 @@ class Instituciones extends CI_Controller
         $id=$_POST['id_institucion'];
         $datos=['instituciones'=>$this->institucionesModel->findById($id)];
         $this->load->view('mantenimientos/instituciones/formularioData',$datos);
-
     }
 
     function create()
@@ -45,7 +44,8 @@ class Instituciones extends CI_Controller
     function update()
     {
         $datos=['nombre'=>$_POST['nombre'],
-        'descripcion'=>$_POST['descripcion'],
+        'direccion'=>$_POST['direccion'],
+        'codigo'=>$_POST['codigo'],
         'estado'=>$_POST['estado'],
         'id_institucion'=>$_POST['id'],];
         $this->institucionesModel->update($datos);

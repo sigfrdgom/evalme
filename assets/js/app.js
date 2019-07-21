@@ -1,6 +1,7 @@
 /**
  *  Los metodos para poder gestionar la entidad categorias 
  * */
+const url='http://localhost/evalme/'
 
 function mostrarCategorias() {
     var request = new XMLHttpRequest();
@@ -11,7 +12,7 @@ function mostrarCategorias() {
             mostrarFormCategorias();
         }
     };
-    request.open('GET','http://localhost/evalme/categorias/')
+    request.open('GET',url+'categorias/')
     request.send()
 }
 
@@ -23,7 +24,7 @@ function mostrarTablaCategorias() {
         }
     };
 
-    request.open('GET','http://localhost/evalme/categorias/recargarTabla')
+    request.open('GET',url+'categorias/recargarTabla')
     request.send()
 }
 
@@ -34,7 +35,7 @@ function mostrarFormCategorias() {
             document.getElementById('frm-categorias').innerHTML=this.responseText;
         }
     };
-    request.open('GET','http://localhost/evalme/categorias/recargarFrm')
+    request.open('GET',url+'categorias/recargarFrm')
     request.send()
 }
 
@@ -48,7 +49,7 @@ function mostrarFormCategoriasData(id) {
     var data = new FormData();
     data.append('id_categoria',id)
 
-    request.open('POST','http://localhost/evalme/categorias/recargarFrmData/')
+    request.open('POST',url+'categorias/recargarFrmData/')
     request.send(data)
 }
 
@@ -76,7 +77,7 @@ function agregarCategoria() {
             data.append('descripcion',descripcion)
             data.append('estado',estado)
 
-            request.open('POST','http://localhost/evalme/categorias/create')
+            request.open('POST',url+'categorias/create')
             request.send(data)
             
     }
@@ -107,7 +108,7 @@ function actualizarCategoria() {
             data.append('estado',estado)
             data.append('id',id)
 
-            request.open('POST','http://localhost/evalme/categorias/update')
+            request.open('POST',url+'categorias/update')
             request.send(data)
             
     }
@@ -126,7 +127,7 @@ function eliminarCategoria(id) {
         var data = new FormData();
         data.append('id',id)
 
-        request.open('POST','http://localhost/evalme/categorias/eliminar/')
+        request.open('POST',url+'categorias/eliminar/')
         request.send(data)
     } 
 }
@@ -143,12 +144,12 @@ function editarCategoria(id) {
     var data = new FormData();
     data.append('id_categoria',id)
 
-    request.open('POST','http://localhost/evalme/categorias/recargarFrmData')
+    request.open('POST',url+'categorias/recargarFrmData')
     request.send(data)
 }
 
 
-/**s
+/**
  *  Los metodos para poder gestionar la entidad instituciones
  */
 function mostrarInstituciones() {
@@ -160,7 +161,7 @@ function mostrarInstituciones() {
             mostrarFormInstituciones();
         }
     };
-    request.open('GET','http://localhost/evalme/Instituciones/')
+    request.open('GET',url+'Instituciones/')
     request.send()
 }
 
@@ -172,7 +173,7 @@ function mostrarTablaInstituciones() {
         }
     };
 
-    request.open('GET','http://localhost/evalme/Instituciones/recargarTabla')
+    request.open('GET',url+'Instituciones/recargarTabla')
     request.send()
 }
 
@@ -183,7 +184,7 @@ function mostrarFormInstituciones() {
             document.getElementById('frm-instituciones').innerHTML=this.responseText;
         }
     };
-    request.open('GET','http://localhost/evalme/Instituciones/recargarFrm')
+    request.open('GET',url+'Instituciones/recargarFrm')
     request.send()
 }
 
@@ -196,8 +197,7 @@ function mostrarFormInstitucionesData(id) {
     };
     var data = new FormData();
     data.append('id_institucion',id)
-
-    request.open('POST','http://localhost/evalme/instituciones/recargarFrmData/')
+    request.open('POST',url+'instituciones/recargarFrmData/')
     request.send(data)
 }
 
@@ -227,19 +227,20 @@ function agregarInstitucion() {
             data.append('estado',estado)
             data.append('codigo',codigo)
 
-            request.open('POST','http://localhost/evalme/instituciones/create')
+            request.open('POST',url+'instituciones/create')
             request.send(data)
             
     }
 }
 
-function actualizarCategoria() {
-    var id = document.getElementById('idCategoria').value;
-    var nombre = document.getElementById('nombreCategoria').value;
-    var estado = document.getElementById('estadoCategoria').value;
-    var descripcion = document.getElementById('descripcionCategoria').value;
+function actualizarInstitucion() {
+    var nombre = document.getElementById('nombreInstitucion').value;
+    var estado = document.getElementById('estadoInstitucion').value;
+    var direccion = document.getElementById('direccionInstitucion').value;
+    var codigo = document.getElementById('codigoInstitucion').value;
+    var id = document.getElementById('idInstitucion').value;
 
-    if (nombre == '' || descripcion == '') {
+    if (nombre == '' || direccion == '' || codigo == '') {
         document.getElementById('mensajes').innerHTML="Por favor ingresa datos en los campos"
     } else {
         document.getElementById('mensajes').innerHTML=""
@@ -247,37 +248,169 @@ function actualizarCategoria() {
 
             request.onreadystatechange = function () {
                 if(request.readyState == 4){
-                    mostrarFormCategorias()
-                    mostrarTablaCategorias()
+                    mostrarFormInstituciones()
+                    mostrarTablaInstituciones()
                 }
             };
 
             var data = new FormData();
             data.append('nombre',nombre)
-            data.append('descripcion',descripcion)
+            data.append('direccion',direccion)
             data.append('estado',estado)
+            data.append('codigo',codigo)
             data.append('id',id)
 
-            request.open('POST','http://localhost/evalme/categorias/update')
+            request.open('POST',url+'instituciones/update')
             request.send(data)
             
     }
 }
 
-function eliminarCategoria(id) {
+function eliminarInstitucion(id) {
     var conf= confirm('¿Esta seguro que desea eliminar este registro?')
     if (conf) {
         var request = new XMLHttpRequest();
         request.onreadystatechange = function () {
             if(request.readyState == 4){
-                mostrarTablaCategorias()
+                mostrarTablaInstituciones()
             }
         };
 
         var data = new FormData();
         data.append('id',id)
 
-        request.open('POST','http://localhost/evalme/categorias/eliminar/')
+        request.open('POST',url+'instituciones/eliminar/')
+        request.send(data)
+    } 
+}
+
+
+
+/**
+ *  Los metodos para poder gestionar la entidad especialidades
+ */
+
+function mostrarEspecialidades() {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if(request.readyState == 4){
+            document.getElementById('main-content').innerHTML=this.responseText;
+            mostrarTablaEspecialidades();
+            mostrarFormEspecialidades();
+        }
+    };
+    request.open('GET',url+'especialidades/')
+    request.send()
+}
+
+function mostrarTablaEspecialidades() {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if(request.readyState == 4){
+            document.getElementById('tbl-especialidades').innerHTML=this.responseText;
+        }
+    };
+
+    request.open('GET',url+'especialidades/recargarTabla')
+    request.send()
+}
+
+function mostrarFormEspecialidades() {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if(request.readyState == 4){
+            document.getElementById('frm-especialidades').innerHTML=this.responseText;
+        }
+    };
+    request.open('GET',url+'especialidades/recargarFrm')
+    request.send()
+}
+
+function mostrarFormEspecialidadesData(id) {
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if(request.readyState == 4){
+            document.getElementById('frm-especialidades').innerHTML=this.responseText;
+        }
+    };
+    var data = new FormData();
+    data.append('id_especialidad',id)
+
+    request.open('POST',url+'especialidades/recargarFrmData/')
+    request.send(data)
+}
+
+
+function agregarEspecialidad() {
+    var estado = document.getElementById('estadoEspecialidad').value;
+    var nombre = document.getElementById('nombreEspecialidad').value;
+
+    if (nombre == '') {
+        document.getElementById('mensajes').innerHTML="Por favor ingresa datos en los campos"
+    } else {
+        document.getElementById('mensajes').innerHTML=""
+            var request = new XMLHttpRequest();
+
+            request.onreadystatechange = function () {
+                if(request.readyState == 4){
+                    mostrarFormEspecialidades()
+                    mostrarTablaEspecialidades()
+                }
+            };
+
+            var data = new FormData();
+            data.append('nombre',nombre)
+            data.append('estado',estado)
+
+            request.open('POST',url+'especialidades/create')
+            request.send(data)
+            
+    }
+}
+
+function actualizarEspecialidad() {
+    var id = document.getElementById('idEspecialidad').value;
+    var estado = document.getElementById('estadoEspecialidad').value;
+    var nombre = document.getElementById('nombreEspecialidad').value;
+
+    if (nombre == '') {
+        document.getElementById('mensajes').innerHTML="Por favor ingresa datos en los campos"
+    } else {
+        document.getElementById('mensajes').innerHTML=""
+            var request = new XMLHttpRequest();
+
+            request.onreadystatechange = function () {
+                if(request.readyState == 4){
+                    mostrarFormEspecialidades()
+                    mostrarTablaEspecialidades()
+                }
+            };
+
+            var data = new FormData();
+            data.append('nombre',nombre)
+            data.append('estado',estado)
+            data.append('id',id)
+
+            request.open('POST',url+'especialidades/update')
+            request.send(data)
+            
+    }
+}
+
+function eliminarEspecialidad(id) {
+    var conf= confirm('¿Esta seguro que desea eliminar este registro?')
+    if (conf) {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function () {
+            if(request.readyState == 4){
+                mostrarTablaEspecialidades()
+            }
+        };
+
+        var data = new FormData();
+        data.append('id',id)
+
+        request.open('POST',url+'especialidades/eliminar/')
         request.send(data)
     } 
 }
