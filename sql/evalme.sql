@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE DATABASE evalme;
 USE evalme;
 
+
 CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
@@ -44,7 +45,7 @@ CREATE TABLE `categorias` (
 INSERT INTO `categorias` (`id_categoria`, `nombre`, `descripcion`, `estado`) VALUES
 (1, 'LENGUAJE Y LITERATURA', 'ESPECIALIDAD EN LENGUAJE Y LITERATURA', 0),
 (2, 'MATEMATICA', 'ESPECIALIDAD EN MATEMATICA', 0),
-(3, 'CIENCIAS NATURALES', 'ESPECIALIDAD EN CIENCIAS NATURALES', 1),
+(3, 'CIENCIAS NATURALES', 'ESPECIALIDAD EN CIENCIAS NATURALES', 0),
 (4, 'ALGEBRA', 'ALGEBRA Y LOGARIRMOS', 1),
 (5, 'ESTUDIOS SOCIALES', 'ESTUDIOS SOCIALES Y CIVICA', 1),
 (7, 'ORIENTACION PARA LA VIDA', 'ORIENTACION PARA LA VIDA Y EL TRABAJO', 1);
@@ -63,6 +64,13 @@ CREATE TABLE `docentes` (
   `apellidos` varchar(96) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `docentes`
+--
+
+INSERT INTO `docentes` (`id_docente`, `id_institucion`, `id_especialidad`, `nombres`, `apellidos`) VALUES
+(1, 1, 2, 'alguien', 'mortal');
+
 -- --------------------------------------------------------
 
 --
@@ -74,6 +82,14 @@ CREATE TABLE `especialidades` (
   `nombre` varchar(45) NOT NULL,
   `estado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `especialidades`
+--
+
+INSERT INTO `especialidades` (`id_especialidad`, `nombre`, `estado`) VALUES
+(1, 'LENGUAJE', 1),
+(2, 'MATEMATICA', 0);
 
 -- --------------------------------------------------------
 
@@ -112,6 +128,13 @@ CREATE TABLE `preguntas` (
   `estado` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `preguntas`
+--
+
+INSERT INTO `preguntas` (`id_pregunta`, `id_categoria`, `pregunta`, `estado`) VALUES
+(1, 4, 'EL DOCENTE ES BUEN DOCENTE?', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -123,7 +146,7 @@ CREATE TABLE `respuestas` (
   `id_docente` int(11) NOT NULL,
   `id_pregunta` int(11) NOT NULL,
   `calificacion` int(11) NOT NULL,
-  `fecha_respuesta` datetime NOT NULL
+  `fecha_respuesta` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -185,7 +208,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `docentes`
 --
 ALTER TABLE `docentes`
-  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_docente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `especialidades`
+--
+ALTER TABLE `especialidades`
+  MODIFY `id_especialidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `instituciones`
@@ -194,8 +223,13 @@ ALTER TABLE `instituciones`
   MODIFY `id_institucion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 
-ALTER TABLE `especialidades`
-  MODIFY `id_especialidad` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `preguntas`
+  MODIFY `id_pregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+
+ALTER TABLE `respuestas`
+  MODIFY `id_respuesta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- Restricciones para tablas volcadas
 --
